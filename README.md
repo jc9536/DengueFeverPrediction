@@ -146,6 +146,15 @@ Mean Absolute Error for Poisson GLM model: $20.38$
 ### Why is this model more appropriate than linear regression for this task?
 The Poisson GLM Model is more appropriate for this data set than a Linear Regression Model because the dependent variable (total_cases) is count data. The Poisson GLM Model can be more appropriate than a Linear Regression Model for count data because it is specifically designed to handle count data and can capture non-linear relationships between the independent and dependent variables. Count data is typically violates assumptions of linear regression by because the distribution of counts is typically skewed and the variance is proportional to the mean. On the other hand, Linear regression assumes that the dependent variable is normally distributed, and that the variance of the dependent variable is constant across all levels of the independent variables.
 
+```python
+# Let's take a look at the distributions of total_cases for the original train data
+sns.histplot(data=labels_df, x="total_cases",
+             color="skyblue", binrange=(0, 475))
+```
+![totalCaseDistribution](GraphsTablesImages/totalCaseDistribution.png)
+
+It seems that there is a very obvious **right-skew** to the distribution of total_cases, which supports our assumptions that the target feature violates assumptions of linear regression.
+
 ## Multi-Layer Perceptron Model
 Here you will train an artificial neural network to perform this task. You can use the [multi-layer perceptron model](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html), which is a simple feedforward neural network. You can vary the architecture of the network using the hidden_layer_sizes parameter. 
 
@@ -154,14 +163,14 @@ Try out at least 3 different depths (number of hidden layers) and 3 different wi
 *Note: the submission requires total_cases be an integer*
 
 ```python
-# Create dataframe with depths (columns) and widths (rows)
+# Create dataframe with depths (columns) and widths (rows) -- takes about ~13 min. to run
 score_table = pd.DataFrame(columns=[100, 200, 300, 400, 500],
                            index=[2, 4, 6, 8, 10])
 
 # For loop to test different depths and widths in Multi-Layer Perceptron Model 
 for width in [2, 4, 6, 8, 10]:
 
-    # Instantiate empty list for depth score per width (row in the dataframe)
+    # Instantiate empty list for depth scores per width (row in the dataframe)
     depth_score = []
 
     # Loop through each depth
@@ -180,7 +189,7 @@ for width in [2, 4, 6, 8, 10]:
 
 
     # Add row to dataframe 
-    score_table.loc[depth] = depth_score
+    score_table.loc[width] = depth_score
 ```
 
 ```python
