@@ -1,8 +1,8 @@
 # Dengue Fever Prediction
 
-*Author:* Jaimie Chin  
-*Class:* DS.UA.301 - Advanced Topics in Data Science: Machine Learning for Climate Change  
-*Date:* April 17th 2023 
+**Author:** Jaimie Chin  
+**Class:** DS.UA.301 - Advanced Topics in Data Science: Machine Learning for Climate Change  
+**Date:** April 17th 2023 
 
 ## Background 
 Dengue Fever is a mosquito-borne viral infection that causes fever, rash, headache, and muscle pain. It is most common in tropical and sub-tropical regions, where climate conditions support mosquito populations.
@@ -102,7 +102,7 @@ y_pred = model.predict(X_test)
 MAE = mean_absolute_error(y_test, y_pred)
 print(f"Mean Absolute Error for Linear Regression Model: {MAE:.2f}")
 ```
-*Mean Absolute Error for Linear Regression Model: $22.96$*
+Mean Absolute Error for Linear Regression Model: $22.96$
 
 ### Scatterplot of Predicted and True Case Counts
 
@@ -141,7 +141,7 @@ y_pred = glm_model.predict(X_test)
 GLM_MAE = mean_absolute_error(y_test, y_pred)
 print(f"Mean Absolute Error for Poisson GLM model: {GLM_MAE:.2f}")
 ```
-*Mean Absolute Error for Poisson GLM model: $20.38$*
+Mean Absolute Error for Poisson GLM model: $20.38$
 
 ### Why is this model more appropriate than linear regression for this task?
 The Poisson GLM Model is more appropriate for this data set than a Linear Regression Model because the dependent variable (total_cases) is count data. The Poisson GLM Model can be more appropriate than a Linear Regression Model for count data because it is specifically designed to handle count data and can capture non-linear relationships between the independent and dependent variables. Count data is typically violates assumptions of linear regression by because the distribution of counts is typically skewed and the variance is proportional to the mean. On the other hand, Linear regression assumes that the dependent variable is normally distributed, and that the variance of the dependent variable is constant across all levels of the independent variables.
@@ -189,7 +189,7 @@ score_table
 ```
 ![score_table](GraphsTablesImages/NNModelScores.png)
 
-*It seems that the **best model** has a depth of $500$ and a width of $10$. The **worst model** has a depth of $100$ and a width of $2$.*
+It seems that the **best model** has a depth of $500$ and a width of $10$. The **worst model** has a depth of $100$ and a width of $2$.
 
 ### Create Output with the Best Multi-Layer Perceptron Model
 
